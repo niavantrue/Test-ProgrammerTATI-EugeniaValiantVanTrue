@@ -45,4 +45,20 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function atasan()
+    {
+        return $this->belongsTo(User::class, 'atasan_id');
+    }
+
+    public function bawahan()
+    {
+        return $this->hasMany(User::class, 'atasan_id');
+    }
+
+    public function logHarian()
+    {
+        return $this->hasMany(LogHarian::class);
+    }
+
 }
