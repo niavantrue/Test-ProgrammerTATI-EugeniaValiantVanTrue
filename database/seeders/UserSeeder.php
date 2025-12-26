@@ -12,14 +12,14 @@ class UserSeeder extends Seeder
 {
     $kepalaDinas = User::create([
         'name' => 'Kepala Dinas',
-        'jabatan' => 'Kepala Dinas',
+        'jabatan' => 'kepala_dinas',
         'email' => 'kepala@dinas.com',
         'password' => bcrypt('password'),
     ]);
 
     $kabid1 = User::create([
         'name' => 'Kepala Bidang 1',
-        'jabatan' => 'Kepala Bidang',
+        'jabatan' => 'kepala_bidang',
         'atasan_id' => $kepalaDinas->id,
         'email' => 'kabid1@dinas.com',
         'password' => bcrypt('password'),
@@ -27,7 +27,7 @@ class UserSeeder extends Seeder
 
     User::create([
         'name' => 'Staff 1',
-        'jabatan' => 'Staff',
+        'jabatan' => 'staff',
         'atasan_id' => $kabid1->id,
         'email' => 'staff1@dinas.com',
         'password' => bcrypt('password'),
@@ -35,7 +35,7 @@ class UserSeeder extends Seeder
 
     $kabid2 = User::create([
         'name' => 'Kepala Bidang 2',
-        'jabatan' => 'Kepala Bidang',
+        'jabatan' => 'kepala_bidang',
         'atasan_id' => $kepalaDinas->id,
         'email' => 'kabid2@dinas.com',
         'password' => bcrypt('password'),
@@ -43,7 +43,7 @@ class UserSeeder extends Seeder
 
     User::create([
         'name' => 'Staff 2',
-        'jabatan' => 'Staff',
+        'jabatan' => 'staff',
         'atasan_id' => $kabid2->id,
         'email' => 'staff2@dinas.com',
         'password' => bcrypt('password'),
