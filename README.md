@@ -1,59 +1,126 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Sistem Manajemen Log Harian Pegawai - Tugas Intern Programmer TATI
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Sistem manajemen log harian pegawai berbasis web yang dibangun dengan Laravel untuk memfasilitasi pencatatan aktivitas harian, verifikasi oleh atasan, dan pelacakan kinerja pegawai dalam hierarki organisasi. Proyek ini merupakan bagian dari tugas internship programmer di TATI.
 
-## About Laravel
+## Fitur Utama
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- **Hierarki Pengguna**: Sistem mendukung struktur hierarki dengan peran Kepala Dinas, Kepala Bidang, dan Staff
+- **Pencatatan Log Harian**: Pegawai dapat mencatat aktivitas harian mereka
+- **Verifikasi dan Persetujuan**: Atasan dapat menyetujui atau menolak log bawahan
+- **Pelacakan Riwayat**: Riwayat verifikasi dan perubahan status log tersimpan
+- **Evaluasi Kinerja**: Sistem evaluasi berdasarkan matriks kinerja (diimplementasikan di `KinerjaService`)
+- **Import Data JSON**: Logika import data dari file JSON diimplementasikan di service layer
+- **Antarmuka Responsif**: UI yang ramah pengguna menggunakan Blade templates dengan Bootstrap 5
+- **Otentikasi Aman**: Sistem login dan otorisasi menggunakan Laravel Breeze
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Teknologi yang Digunakan
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **Laravel 11**: Framework PHP untuk backend dan MVC architecture
+- **Laravel Breeze**: Package untuk autentikasi dan otorisasi
+- **PHP 8.2**: Bahasa pemrograman server-side
+- **Blade Templates**: Templating engine Laravel untuk UI
+- **MySQL/SQLite**: Sistem database
+- **Bootstrap 5**: Framework CSS untuk UI responsif
+- **Vite**: Build tool untuk asset frontend
+- **PHPUnit**: Framework testing
 
-## Learning Laravel
+## Implementasi Khusus Sesuai Tugas
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+- **No. 3 & 4**: Logika bisnis untuk evaluasi kinerja dan import JSON diimplementasikan di service layer (`app/Services/KinerjaService.php`)
+- **Autentikasi**: Menggunakan Laravel Breeze untuk sistem login dan registrasi
+- **UI**: Menggunakan Blade templates untuk semua tampilan frontend
+- **Service Layer**: Logika import JSON dan perhitungan kinerja dipisahkan di service classes untuk maintainability
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Persyaratan Sistem
 
-## Laravel Sponsors
+- PHP >= 8.1
+- Composer
+- Node.js & npm
+- MySQL atau SQLite
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Instalasi
 
-### Premium Partners
+1. **Clone repository**:
+   ```bash
+   git clone <repository-url>
+   cd test-programmertati-eugeniavaliantvantrue
+   ```
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+2. **Install dependencies PHP**:
+   ```bash
+   composer install
+   ```
 
-## Contributing
+3. **Install dependencies JavaScript**:
+   ```bash
+   npm install
+   ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+4. **Konfigurasi environment**:
+   - Salin file `.env.example` ke `.env`
+   - Sesuaikan konfigurasi database di `.env`
 
-## Code of Conduct
+5. **Generate application key**:
+   ```bash
+   php artisan key:generate
+   ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+6. **Jalankan migrasi database**:
+   ```bash
+   php artisan migrate
+   ```
 
-## Security Vulnerabilities
+7. **Seed database dengan data awal**:
+   ```bash
+   php artisan db:seed
+   ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+8. **Build assets**:
+   ```bash
+   npm run build
+   ```
 
-## License
+9. **Jalankan server**:
+   ```bash
+   php artisan serve
+   ```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Aplikasi akan berjalan di `http://localhost:8000`
+
+## Penggunaan
+
+### Login
+- Gunakan kredensial yang telah di-seed atau buat akun baru melalui Laravel Breeze
+
+### Untuk Staff:
+- Akses menu "Log Harian"
+- Tambah log aktivitas harian
+- Lihat status persetujuan
+
+### Untuk Atasan (Kepala Bidang/Kepala Dinas):
+- Akses menu "Verifikasi Log"
+- Setujui atau tolak log bawahan
+- Lihat riwayat verifikasi
+
+## Struktur Database
+
+- **users**: Tabel pengguna dengan hierarki (atasan_id, jabatan)
+- **log_harians**: Tabel log harian dengan status verifikasi (pending/approved/rejected)
+- **migrations**: Migrasi untuk setup database dan relasi
+
+## Struktur Kode
+
+- **app/Models/**: Model Eloquent untuk User dan LogHarian
+- **app/Http/Controllers/**: Controller untuk LogHarian dan VerifikasiLog
+- **app/Services/**: Service classes untuk logika bisnis (KinerjaService)
+- **resources/views/**: Blade templates untuk UI
+- **database/migrations/**: Migrasi database
+- **database/seeders/**: Seeder untuk data awal
+- **tests/**: Unit dan feature tests
+
+## Testing
+
+Jalankan test dengan PHPUnit:
+```bash
+php artisan test
+```
